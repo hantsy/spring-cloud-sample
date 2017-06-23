@@ -5,23 +5,17 @@
  */
 package com.hantsylabs.sample.springmicroservice.post;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.github.slugify.Slugify;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -32,32 +26,32 @@ import org.springframework.data.annotation.CreatedDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-class Post implements Serializable {
+class Post extends AuditableEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @JsonView(View.Summary.class)
+    @NotEmpty
     private String title;
-
-    private String content;
     
+    @NotEmpty
+    private String slug;
+
+    @JsonView(View.Public.class)
+    @NotEmpty
+    private String content;
+
     @Enumerated(EnumType.STRING)
     @Builder.Default
+    @JsonView(View.Summary.class)
     private Status status = Status.DRAFT;
-
-    @Embedded
-    @AttributeOverrides(value = {
-        @AttributeOverride(name = "id", column = @Column(name = "author_id"))
-    })
-    private UserId author;
-
-    @CreatedDate
-    private LocalDateTime createdDate;
 
     static enum Status {
         DRAFT,
         PUBLISHED
+    }
+      
+    @PrePersist
+    public void slugify(){
+        this.slug = new Slugify().slugify(this.title);
     }
 
 }

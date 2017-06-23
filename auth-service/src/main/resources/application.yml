@@ -1,19 +1,12 @@
 server:
-  port: 8000
+  port: 9999
+  contextPath: /uaa
 
 spring:
-  cache:
-    type: redis
-      
-  session:
-    store-type: redis
-
-  messages:
-    basename: messages
 
   datasource:
     dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-    url: jdbc:mysql://localhost:3306/userdb
+    url: ${USERDB_URL:jdbc:mysql://localhost:3306/userdb}
     username: user
     password: password
     cachePrepStmts: true
@@ -36,6 +29,7 @@ spring:
   data:
     jpa:
       repositories.enabled: true
+
 
 security:
   sessions: ALWAYS

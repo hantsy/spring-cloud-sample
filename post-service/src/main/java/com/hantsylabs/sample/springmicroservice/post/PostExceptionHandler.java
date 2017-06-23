@@ -5,6 +5,7 @@
  */
 package com.hantsylabs.sample.springmicroservice.post;
 
+import com.hantsylabs.sample.springmicroservice.post.PostNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,8 @@ public class PostExceptionHandler {
     @ExceptionHandler(PostNotFoundException.class)
     public ResponseEntity notFound(PostNotFoundException ex, WebRequest req) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("entityType", "POST");
-        errors.put("entityId", "" + ex.getId());
+        errors.put("entity", "POST");
+        errors.put("id", "" + ex.getSlug());
         errors.put("code", "not_found");
         errors.put("message", ex.getMessage());
 

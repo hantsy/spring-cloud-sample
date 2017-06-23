@@ -1,0 +1,9 @@
+server:
+  port: 8761
+
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+  file: app.log

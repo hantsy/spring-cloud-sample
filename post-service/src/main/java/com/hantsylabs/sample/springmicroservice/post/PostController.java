@@ -1,12 +1,21 @@
 package com.hantsylabs.sample.springmicroservice.post;
 
+import com.hantsylabs.sample.springmicroservice.post.CommentForm;
+import com.hantsylabs.sample.springmicroservice.post.PostService;
+import com.hantsylabs.sample.springmicroservice.post.PostNotFoundException;
+import com.hantsylabs.sample.springmicroservice.post.PostForm;
+import com.hantsylabs.sample.springmicroservice.post.PostSpecifications;
+import com.hantsylabs.sample.springmicroservice.post.PostRepository;
+import com.hantsylabs.sample.springmicroservice.post.CommentRepository;
+import com.hantsylabs.sample.springmicroservice.post.Post;
+import com.hantsylabs.sample.springmicroservice.post.Slug;
+import com.hantsylabs.sample.springmicroservice.post.Comment;
+import com.fasterxml.jackson.annotation.JsonView;
 import java.net.URI;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -27,20 +36,19 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/posts")
+@Slf4j
 public class PostController {
 
-    private static final Logger log = LoggerFactory.getLogger(PostController.class);
-
-    @Inject
     private PostService postService;
 
-    @Inject
     private PostRepository postRepository;
 
-    @Inject
     private CommentRepository commentRepository;
 
-    public PostController() {
+    public PostController(PostService postService, PostRepository postRepository, CommentRepository commentRepository) {
+        this.postService = postService;
+        this.postRepository = postRepository;
+        this.commentRepository = commentRepository;
     }
 
     @GetMapping()
@@ -50,6 +58,7 @@ public class PostController {
 //            @ApiResponse(code = 200, message = "return all posts by page")
 //        }
 //    )
+    @JsonView(View.Summary.class)
     public ResponseEntity<Page<Post>> getAllPosts(
         @RequestParam(value = "q", required = false) String keyword, //
         @RequestParam(value = "status", required = false) Post.Status status, //
@@ -59,19 +68,18 @@ public class PostController {
 
         Page<Post> posts = this.postRepository.findAll(PostSpecifications.filterByKeywordAndStatus(keyword, status), page);
 
-        log.debug("get posts size @" + posts.getTotalElements());
-
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Post> getPost(@PathVariable("id") Long id) {
+    @GetMapping(value = "/{slug}")
+    @JsonView(View.Public.class)
+    public ResponseEntity<Post> getPost(@PathVariable("slug") String slug) {
 
-        log.debug("get postsinfo by id @" + id);
+        log.debug("get postsinfo by slug @" + slug);
 
-        Post post = this.postRepository.findById(id).orElseThrow(
+        Post post = this.postRepository.findBySlug(slug).orElseThrow(
             () -> {
-                return new PostNotFoundException(id);
+                return new PostNotFoundException(slug);
             }
         );
 
@@ -90,8 +98,8 @@ public class PostController {
         log.debug("saved post id is @" + saved.getId());
         URI loacationHeader = ServletUriComponentsBuilder
             .fromContextPath(request)
-            .path("/posts/{id}")
-            .buildAndExpand(saved.getId())
+            .path("/posts/{slug}")
+            .buildAndExpand(saved.getSlug())
             .toUri();
 
         HttpHeaders headers = new HttpHeaders();
@@ -100,48 +108,48 @@ public class PostController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<Void> updatePost(@PathVariable("id") Long id, @RequestBody @Valid PostForm form) {
+    @PutMapping(value = "/{slug}")
+    public ResponseEntity<Void> updatePost(@PathVariable("slug") String slug, @RequestBody @Valid PostForm form) {
 
-        log.debug("update post by id @" + id + ", form content@" + form);
+        log.debug("update post by id @" + slug + ", form content@" + form);
 
-        this.postService.updatePost(id, form);
+        this.postService.updatePost(slug, form);
 
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deletePostById(@PathVariable("id") Long id) {
+    @DeleteMapping(value = "/{slug}")
+    public ResponseEntity<Void> deletePostById(@PathVariable("slug") String slug) {
 
-        log.debug("delete post by id @" + id);
+        log.debug("delete post by id @" + slug);
 
-        this.postService.deletePostById(id);
+        this.postService.deletePost(slug);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping(value = "/{id}/comments")
+    @GetMapping(value = "/{slug}/comments")
     public ResponseEntity<Page<Comment>> getCommentsOfPost(
-        @PathVariable("id") Long id,
+        @PathVariable("slug") String slug,
         @PageableDefault(page = 0, size = 10, sort = "createdDate", direction = Direction.DESC) Pageable page) {
 
-        log.debug("get comments of post@" + id + ", page@" + page);
+        log.debug("get comments of post@" + slug + ", page@" + page);
 
-        Page<Comment> commentsOfPost = this.commentRepository.findByPost(new PostId(id), page);
+        Page<Comment> commentsOfPost = this.commentRepository.findByPost(new Slug(slug), page);
 
         log.debug("get post comment size @" + commentsOfPost.getTotalElements());
 
         return new ResponseEntity<>(commentsOfPost, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/{id}/comments")
+    @PostMapping(value = "/{slug}/comments")
     public ResponseEntity<Void> createComment(
-        @PathVariable("id") @NotNull Long id, @RequestBody CommentForm comment) {
+        @PathVariable("slug") @NotNull String slug, @RequestBody CommentForm comment, HttpServletRequest request) {
 
-        log.debug("new comment of post@" + id + ", comment" + comment);
+        log.debug("new comment of post@" + slug + ", comment" + comment);
 
         Comment _comment = Comment.builder()
-            .post(new PostId(id))
+            .post(new Slug(slug))
             .content(comment.getContent())
             .build();
 
@@ -149,7 +157,13 @@ public class PostController {
 
         log.debug("saved comment @" + saved.getId());
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        URI location = ServletUriComponentsBuilder
+            .fromContextPath(request)
+            .path("/posts/{slug}/comments/{id}")
+            .buildAndExpand(slug, saved.getId())
+            .toUri();
+
+         return ResponseEntity.created(location).build();
     }
 
 }

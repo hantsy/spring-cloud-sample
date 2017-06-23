@@ -25,11 +25,11 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public User createUser(UserForm form) {
-        if (!this.userRepository.findByUsername(form.getUsername()).isPresent()) {
+        if (this.userRepository.findByUsername(form.getUsername()).isPresent()) {
             throw new UsernameWasTakenException("username was taken");
         }
 
-        if (!this.userRepository.findByEmail(form.getEmail()).isPresent()) {
+        if (this.userRepository.findByEmail(form.getEmail()).isPresent()) {
             throw new EmailWasTakenException("email was taken");
         }
 
@@ -41,15 +41,40 @@ public class UserService {
         return this.userRepository.save(_user);
     }
 
-    public User updateUser(Long id, UserForm form) {
-        User _user = this.userRepository.findById(id).orElseThrow(
+    public User updateUser(String username, UserForm form) {
+        User _user = this.userRepository.findByUsername(username).orElseThrow(
             () -> {
-                return new UserNotFoundException(id);
+                return new UserNotFoundException(username);
             }
         );
         
             
         _user.setEmail(form.getEmail());
+        
+        return this.userRepository.save(_user);
+    }
+
+    public User lock(String username) {
+         User _user = this.userRepository.findByUsername(username).orElseThrow(
+            () -> {
+                return new UserNotFoundException(username);
+            }
+        );
+        
+            
+        _user.setActive(false);
+        
+        return this.userRepository.save(_user);
+    }
+
+    public User unlock(String username) {
+         User _user = this.userRepository.findByUsername(username).orElseThrow(
+            () -> {
+                return new UserNotFoundException(username);
+            }
+        );
+            
+        _user.setActive(true);
         
         return this.userRepository.save(_user);
     }

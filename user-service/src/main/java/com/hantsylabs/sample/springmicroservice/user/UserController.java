@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,9 +65,12 @@ public class UserController {
 
     @GetMapping(value = "")
     public ResponseEntity getAll(
-        @RequestParam("q") String q,
+        @RequestParam(value = "q", required = false) String q,
+        @RequestParam(value = "role", required = false) String role,
+        @RequestParam(value = "active", required = false) String active,
         @PageableDefault(page = 0, size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable page) {
-        Page<User> users = this.userRepository.findAll(UserSpecifications.byKeyword(q), page);
+        
+        Page<User> users = this.userRepository.findAll(UserSpecifications.byKeyword(q, role, active), page);
 
         return ResponseEntity.ok(users);
     }
@@ -85,47 +87,53 @@ public class UserController {
         headers.setLocation(
             ServletUriComponentsBuilder
                 .fromContextPath(req)
-                .path("/users/{id}")
+                .path("/users/{username}")
                 .buildAndExpand(saved.getId()).toUri()
         );
 
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity getById(@PathVariable("id") Long id) {
-        User _user = this.userRepository.findById(id).orElseThrow(
+    @GetMapping(value = "/{username}")
+    public ResponseEntity getById(@PathVariable("id") String username) {
+        User _user = this.userRepository.findByUsername(username).orElseThrow(
             () -> {
-                return new UserNotFoundException(id);
+                return new UserNotFoundException(username);
             }
         );
 
         return ResponseEntity.ok(_user);
     }
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity updateUser(@PathVariable("id") Long id,
-        @RequestBody @Valid UserForm form,
-        HttpServletRequest req) {
+    @PostMapping(value = "/{username}/lock")
+    public ResponseEntity lockUser(@PathVariable("id") String username) {
 
-        log.debug("updating user form:" + form);
+        log.debug("locking user:" + username);
 
-        User saved = this.userService.updateUser(id, form);
-
-        log.debug("updated user:" + saved);
+        this.userService.lock(username);
 
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteById(@PathVariable("id") Long id) {
-        User _user = this.userRepository.findById(id).orElseThrow(
+    @DeleteMapping(value = "/{username}/lock")
+    public ResponseEntity unlockUser(@PathVariable("id") String username) {
+
+        log.debug("unlocking user:" + username);
+
+        this.userService.unlock(username);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping(value = "/{username}")
+    public ResponseEntity deleteById(@PathVariable("id") String username) {
+        User _user = this.userRepository.findByUsername(username).orElseThrow(
             () -> {
-                return new UserNotFoundException(id);
+                return new UserNotFoundException(username);
             }
         );
 
-        this.userRepository.deleteById(id);
+        this.userRepository.delete(_user);
 
         return ResponseEntity.noContent().build();
     }

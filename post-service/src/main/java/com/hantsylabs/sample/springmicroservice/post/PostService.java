@@ -5,7 +5,8 @@
  */
 package com.hantsylabs.sample.springmicroservice.post;
 
-import java.util.Optional;
+import com.hantsylabs.sample.springmicroservice.post.PostRepository;
+import com.hantsylabs.sample.springmicroservice.post.Post;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,10 @@ public class PostService {
 
     @Inject
     private PostRepository postRepository;
+    
+//    public PostService(PostRepository posts){
+//        this.postRepository = posts;
+//    }
 
     public Post createPost(PostForm form) {
         Post _post = Post.builder()
@@ -32,10 +37,10 @@ public class PostService {
         return saved;
     }
 
-    public Post updatePost(Long id, PostForm form) {
-        Post _post = this.postRepository.findById(id).orElseThrow(
+    public Post updatePost(String slug, PostForm form) {
+        Post _post = this.postRepository.findBySlug(slug).orElseThrow(
             ()-> {
-                return new PostNotFoundException(id);
+                return new PostNotFoundException(slug);
             }
         );
         
@@ -47,8 +52,12 @@ public class PostService {
        return saved;
     }
 
-    public void deletePostById(Long id) {
-        this.postRepository.deleteById(id);
+    public void deletePost(String slug) {
+        this.postRepository.delete(this.postRepository.findBySlug(slug).orElseThrow(
+            () -> {
+                return new PostNotFoundException(slug);
+            }
+        ));
     }
 
 }

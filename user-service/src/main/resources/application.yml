@@ -2,18 +2,10 @@ server:
   port: 8001
 
 spring:
-  cache:
-    type: redis
-      
-  session:
-    store-type: redis
-
-  messages:
-    basename: messages
 
   datasource:
     dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-    url: jdbc:mysql://localhost:3306/userdb
+    url: ${USERDB_URL:jdbc:mysql://localhost:3306/userdb}
     username: user
     password: password
     cachePrepStmts: true
@@ -39,8 +31,14 @@ spring:
       repositories.enabled: true
 
 security:
-  sessions: ALWAYS
-
+  sessions: NEVER
+  oauth2:
+    resource:
+      jwt:
+        keyValue: |
+        -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6B4yV0n48uT1YTwDq+ghVDBDk17eoy65+tTBItcPIHnyFnR6mkIILmJ5SAvxzV9Jy/mq0wqh0OEQCo2azPgZXojGQvF2+6Hlc8lvt4X44PpQUC6JA9z8uFpwCWRya8DDUxXpaGFm/5TUuWlZZCmMv6b1+s5AyBk5SBADzZx+knipXJFPO3klmhjRbIN7Vb+yuPku/1rVSoyMzFeZW911x5tjQ4bz10H+KEmSkhtB+nCjo1yLNCfBFFbqjWdhCm9vmwXfPnLGiVgpexbqafMaTnCbFzbXj16p/CumpHOny089IAKM1OpBdX2keI4sYgOa5+IUj0448VJbZekVXpjMXwIDAQAB
+        -----END PUBLIC KEY-----
 logging:
   level:
     org.springframework.web: INFO

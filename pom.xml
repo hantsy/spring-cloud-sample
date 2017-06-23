@@ -3,18 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hantsylabs.sample.microservice</groupId>
-    <artifactId>spring-microservice-sample-parent</artifactId>
+    <artifactId>spring-microservice-cloud-sample-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Spring Microservice Demo</name>
+    <name>Spring Microservice Demo With Spring Cloud</name>
     <description>Microservice demo by Spring technology stack(Spring Boot, Spring Security, Spring Data, Spring Batch, Spring Integration, Spring Cloud, etc)</description> 
 
     <modules>
         <module>user-service</module>
         <module>auth-service</module>
-        <module>image-service</module>
         <module>post-service</module>
-<!--        <module>comment-service</module>-->
+		<module>gateway</module>
+		<module>eureka-server</module>
     </modules>
 	
 </project>

@@ -14,8 +14,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -53,38 +53,48 @@ public class User implements UserDetails, Serializable {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "active")
+    @Builder.Default
+    private boolean active = true;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
-    private List<String> roles  = new ArrayList<>();
-    
+    private List<String> roles = new ArrayList<>();
+
     @Column(name = "created_date")
     @CreatedDate
     private LocalDateTime createdDate;
 
+    @PrePersist()
+    public void beforePersist() {
+        if (this.roles.isEmpty()) {
+            this.roles.add("USER");
+        }
+    }
+
     @Override
-    @Transient
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return AuthorityUtils.createAuthorityList(this.roles.toArray(new String[this.roles.size()]));
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return this.active;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return this.active;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return this.active;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.active;
     }
 
 }
