@@ -40,4 +40,9 @@ logging:
     org.springframework.security: DEBUG
     com.hantsylabs: DEBUG
   file: app.log
-  
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
