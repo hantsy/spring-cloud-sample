@@ -27,11 +27,11 @@ public class GatewayApplication extends WebSecurityConfigurerAdapter {
             .logout()
             .and()
                 .authorizeRequests()
-                .antMatchers("/index.html", "/home.html", "/", "/login").permitAll()
-                .anyRequest().authenticated()
+                //.antMatchers("/index.html", "/home.html", "/", "/login").permitAll()
+                .anyRequest().permitAll()
             .and()
-                .csrf()
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+                //.csrf().disable();
+                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
         // @formatter:on
     }
 }

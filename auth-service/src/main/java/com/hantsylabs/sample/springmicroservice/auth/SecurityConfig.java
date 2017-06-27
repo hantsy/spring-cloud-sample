@@ -14,7 +14,7 @@ import javax.inject.Inject;
  * Created by hantsy on 6/17/2017.
  */
 @Configuration
-@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+@Order(-20)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Inject
@@ -24,16 +24,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
         http
-            .formLogin().loginPage("/login").permitAll()
+            .httpBasic()
             .and()
-                .requestMatchers().antMatchers("/login", "/signup", "/oauth/authorize", "/oauth/confirm_access")
+                .formLogin().loginPage("/login").permitAll()
+            .and()
+                .authorizeRequests().antMatchers("/login", "/signup", "/oauth/authorize", "/oauth/confirm_access").permitAll()
             .and()
                 .authorizeRequests().anyRequest().authenticated();
+//            .and()
+//                .csrf().disable();
         // @formatter:on
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.parentAuthenticationManager(authenticationManager);
-//    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.parentAuthenticationManager(authenticationManager);
+    }
 }

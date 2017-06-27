@@ -31,8 +31,9 @@ spring:
       repositories.enabled: true
 
 
-security:
-  sessions: ALWAYS
+#security:
+#  user:
+#    password: password
 
 logging:
   level:
