@@ -35,9 +35,12 @@ eureka:
 
 zuul:
   routes:
-    resource:
+    posts:
       path: /posts/**
       url: http://localhost:8002/
-    user:
-      path: /**
+    users:
+      path: /users/**
       url: http://localhost:8001/
+    uaa:
+      path: /uaa/**
+      url: http://localhost:9999/

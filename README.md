@@ -12,5 +12,5 @@ curl -X POST http://localhost:9999/uaa/oauth/token?grant_type=password&username=
 
 Authentication code.
 
-https://localhost:9999/uaa/oauth/authorize?response_type=code&
-  client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&scope=photos&state=1234zyx
+http://localhost:9999/uaa/oauth/authorize?response_type=code&
+  client_id=acme&redirect_uri=http://localhost&scope=openid
