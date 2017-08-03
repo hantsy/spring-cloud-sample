@@ -1,9 +1,11 @@
+server:
+  port: 8080
+
 debug: true
 
 spring:
   aop:
     proxy-target-class: true
-
 
 security:
   user:
@@ -37,10 +39,10 @@ zuul:
   routes:
     posts:
       path: /posts/**
-      url: http://localhost:8002/
+      url: http://localhost:8002/posts/
     users:
       path: /users/**
-      url: http://localhost:8001/
-    uaa:
-      path: /uaa/**
-      url: http://localhost:9999/
+      url: http://localhost:8001/users/
+    user:
+      path: /user/**
+      url: http://localhost:9999/uaa/user
