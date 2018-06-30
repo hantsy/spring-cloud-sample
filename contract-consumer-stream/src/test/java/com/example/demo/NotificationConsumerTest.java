@@ -13,11 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest()
+@SpringBootTest(properties = "stubrunner.work-offline=true")
 @AutoConfigureStubRunner(
     ids = "com.example:contract-producer-stream:+:stubs:8090",
     stubsMode = StubRunnerProperties.StubsMode.LOCAL
-    //repositoryRoot = "${user.home}/.m2/repository"
 )
 public class NotificationConsumerTest {
 
