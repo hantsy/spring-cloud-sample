@@ -2,6 +2,7 @@ package com.example.demo;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;
@@ -18,7 +19,7 @@ public class Receiver {
     @RabbitListener(bindings = {
         @QueueBinding(
             value = @Queue(name = "notification"),
-            exchange = @Exchange(name = "notification.exchange"),
+            exchange = @Exchange(name = "notification.exchange", type = ExchangeTypes.TOPIC),
             key = "notification.messages"
         )
     })
