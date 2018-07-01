@@ -10,7 +10,7 @@ org.springframework.cloud.contract.spec.Contract.make {
         url "/notifications/404"
         method GET()
         headers {
-            header("accept", regex("application/.*json.*"))
+            header("accept", applicationJson())
         }
     }
     response {

@@ -17,7 +17,7 @@ public class NotificatinClient {
 
     Notification getNotificationById(String id) {
         try {
-            ResponseEntity<Notification> response = this.restTemplate.getForEntity("http://localhost:8080/notifications/{id}", Notification.class, id);
+            ResponseEntity<Notification> response = this.restTemplate.getForEntity("http://localhost:8090/notifications/{id}", Notification.class, id);
             return response.getBody();
         } catch (HttpClientErrorException e) {
             if (e.getStatusCode() == NOT_FOUND) {

@@ -1,6 +1,3 @@
-import org.springframework.http.HttpHeaders
-import org.springframework.http.MediaType
-
 org.springframework.cloud.contract.spec.Contract.make {
     description("""
         Get notification by id
@@ -10,17 +7,17 @@ org.springframework.cloud.contract.spec.Contract.make {
         url "/notifications/1"
         method GET()
         headers {
-            header("accept", regex("application/.*json.*"))
+            header("accept", applicationJson())
         }
     }
     response {
-        status(200)
+        status( 200)
         body([
             body: "test message",
             type: "MESSAGE"
         ])
         headers {
-            header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE)
+            header("Content-Type", applicationJsonUtf8())
         }
     }
 }

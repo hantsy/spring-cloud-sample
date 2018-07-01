@@ -7,7 +7,7 @@
 	<artifactId>contract-producer-rest-external-contracts</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>contract-producer-rest-external-contracts</name>
-	<description>Stubs </description>
+	<description>Install Stubs for consumer side </description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -22,6 +22,10 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <spring-cloud-contract.version>2.0.0.RELEASE</spring-cloud-contract.version>
+		<!-- We don't want to run tests -->
+		<skipTests>true</skipTests>
+		<!-- We don't want to add build folders to the generated jar -->
+		<excludeBuildFolders>true</excludeBuildFolders>
 	</properties>
 
 	<dependencyManagement>
