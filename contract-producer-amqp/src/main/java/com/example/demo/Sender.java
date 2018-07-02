@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,11 @@ public class Sender {
     RabbitTemplate amqpTemplate;
 
     public void send(Notification notification){
-        this.amqpTemplate.convertAndSend("notification.exchange", "notification.messages", notification);
+        this.amqpTemplate.convertAndSend(
+            "notification.exchange",
+            "notification.messages",
+            notification
+        );
     }
 
 }
