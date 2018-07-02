@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.TimeUnit;
 
-@SpringBootTest(properties = "stubrunner.amqp.enabled=true")
+@SpringBootTest()
 @RunWith(SpringRunner.class)
 @AutoConfigureMessageVerifier
 public class MessageVerifierBase {
@@ -27,6 +27,6 @@ public class MessageVerifierBase {
 
     @Before
     public void setup() {
-        verifier.receive("notification.exchange", 100, TimeUnit.MILLISECONDS);
+        //verifier.receive("notification.exchange", 100, TimeUnit.MILLISECONDS);
     }
 }

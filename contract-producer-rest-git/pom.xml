@@ -99,11 +99,12 @@
 						<version>${project.version}</version>
 					</contractDependency>
 					<!-- The mode can't be classpath -->
-					<contractsMode>REMOTE</contractsMode>
+					<contractsMode>LOCAL</contractsMode>
+                    <contractsSnapshotCheckSkip>true</contractsSnapshotCheckSkip>
 				</configuration>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<phase>install</phase>
 						<goals>
 							<!-- By default we will not push the stubs back to SCM,
 							you have to explicitly add it as a goal -->

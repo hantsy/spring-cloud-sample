@@ -6,18 +6,18 @@ org.springframework.cloud.contract.spec.Contract.make {
     request {
         url "/notifications/1"
         method GET()
-        headers {
-            header("accept", applicationJson())
-        }
+//        headers {
+//            header("accept", applicationJson())
+//        }
     }
     response {
         status( 200)
         body([
-            body: regex("test message.*"),
+            body: "test message",
             type: "MESSAGE"
         ])
         headers {
-            header("Content-Type", applicationJsonUtf8())
+            contentType(applicationJsonUtf8())
         }
     }
 }

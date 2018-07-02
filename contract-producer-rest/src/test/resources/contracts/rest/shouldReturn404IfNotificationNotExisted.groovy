@@ -9,9 +9,9 @@ org.springframework.cloud.contract.spec.Contract.make {
     request {
         url "/notifications/404"
         method GET()
-        headers {
-            header("accept", regex("application/.*json.*"))
-        }
+//        headers {
+//            header("accept", regex("application/.*json.*"))
+//        }
     }
     response {
         status(404)
@@ -20,7 +20,7 @@ org.springframework.cloud.contract.spec.Contract.make {
             code   : "not_found"
         ])
         headers {
-            header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE)
+            contentType(applicationJsonUtf8())
         }
     }
 }

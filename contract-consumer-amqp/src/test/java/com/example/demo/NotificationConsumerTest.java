@@ -3,9 +3,11 @@ package com.example.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.contract.stubrunner.StubFinder;
+import org.springframework.cloud.contract.stubrunner.StubTrigger;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,15 +23,18 @@ import static org.junit.Assert.assertEquals;
 public class NotificationConsumerTest {
 
     @Autowired
-    StubFinder stubFinder;
+    StubTrigger stubTrigger;
+
+    @Captor
+    ArgumentCaptor<Notification> argumentCaptor;
 
     @Autowired
     Receiver receiver;
 
     @Test
-    public void testOnMessageReceived(){
-        stubFinder.trigger("notification.event");
-        assertEquals("test message",  this.receiver.getMessage());
+    public void testOnMessageReceived() {
+        stubTrigger.trigger("notification.event");
+        assertEquals("test message", this.receiver.getMessage());
     }
 
 }

@@ -19,10 +19,10 @@ public class MessageVerifierBase {
     MessageVerifier verifier;
 
     @Autowired
-    MessagePublisher sender;
+    NotificationPublisher sender;
 
     public void send() {
-        this.sender.send(Message.builder().body("test message").build());
+        this.sender.send(Notification.builder().body("test message").build());
     }
 
     @Before

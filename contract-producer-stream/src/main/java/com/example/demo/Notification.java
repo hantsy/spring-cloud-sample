@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Message {
+public class Notification {
     private String title;
     private String body;
 
@@ -15,4 +15,3 @@ public class Message {
         WARNING, ERROR, MESSAGE;
     }
 }
-

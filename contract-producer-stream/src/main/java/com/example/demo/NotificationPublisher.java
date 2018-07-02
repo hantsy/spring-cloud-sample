@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class MessagePublisher {
+public class NotificationPublisher {
 
     private final Source source;
 
-    public void send(Message notification) {
+    public void send(Notification notification) {
         this.source.output().send(MessageBuilder.withPayload(notification).build());
     }
 

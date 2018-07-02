@@ -14,10 +14,9 @@ org.springframework.cloud.contract.spec.Contract.make {
             body: "test message",
             type: "MESSAGE"
         ])
-        headers {
-            header("contentType", regex(".*application/.*json.*"))
-            //header("__TypeId__", "com.example.demo.Message")
-        }
+//        headers {
+//           contentType(applicationJson())
+//        }
     }
 }
 

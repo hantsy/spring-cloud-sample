@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.ExchangeTypes;
@@ -11,18 +12,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-@Getter
+@Data
 public class Receiver {
 
     private String message;
 
-    @RabbitListener(bindings = {
-        @QueueBinding(
-            value = @Queue(name = "notification"),
-            exchange = @Exchange(name = "notification.exchange", type = ExchangeTypes.TOPIC),
-            key = "notification.messages"
+    @RabbitListener(
+        bindings = @QueueBinding(
+            value = @Queue(value = ContractConsumerAmqpApplication.queueName),
+            exchange = @Exchange(
+                value = ContractConsumerAmqpApplication.exchangeName,
+                ignoreDeclarationExceptions = "true"
+            )
         )
-    })
+    )
     public void onNotificationReceived(Notification notification) {
         log.debug("payload::" + notification);
         this.message = notification.getBody();

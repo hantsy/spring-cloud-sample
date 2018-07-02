@@ -15,8 +15,7 @@ org.springframework.cloud.contract.spec.Contract.make {
             type: "MESSAGE"
         ])
         headers {
-            header("contentType", applicationJsonUtf8())
-            header("__TypeId__", "com.example.demo.Notification")
+            contentType(applicationJson())
         }
     }
 }
