@@ -1,0 +1,62 @@
+{
+    "provider": {
+        "name": "provider-pact"
+    },
+    "consumer": {
+        "name": "consumer-pact"
+    },
+    "interactions": [
+        {
+            "description": "Get a notification by existing id: 1",
+            "request": {
+                "method": "GET",
+                "path": "/notifications/1"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json;charset=UTF-8"
+                },
+                "body": {
+                    "body": "test message",
+                    "type": "MESSAGE"
+                }
+            },
+            "providerStates": [
+                {
+                    "name": "should return notification if existed"
+                }
+            ]
+        },
+        {
+            "description": "Get a notification by none-existing id: 404",
+            "request": {
+                "method": "GET",
+                "path": "/notifications/404"
+            },
+            "response": {
+                "status": 404,
+                "headers": {
+                    "Content-Type": "application/json;charset=UTF-8"
+                },
+                "body": {
+                    "code": "not_found",
+                    "message": "Notification: 404 was not found"
+                }
+            },
+            "providerStates": [
+                {
+                    "name": "should return error 404 if not existed"
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.13"
+        }
+    }
+}
