@@ -30,4 +30,5 @@ public class Receiver {
         log.debug("payload::" + notification);
         this.message = notification.getBody();
     }
+
 }
