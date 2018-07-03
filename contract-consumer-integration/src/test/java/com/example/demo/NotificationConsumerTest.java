@@ -13,7 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest()
+//@SpringBootTest(properties = {"stubrunner.amqp.enabled=true", "stubrunner.stream.enabled=false", "stubrunner.integration.enabled=false"})
+@SpringBootTest
 @AutoConfigureStubRunner(
     ids = "com.example:contract-producer-integration:+:stubs:8090",
     stubsMode = StubRunnerProperties.StubsMode.LOCAL
@@ -27,9 +28,9 @@ public class NotificationConsumerTest {
     Receiver receiver;
 
     @Test
-    public void testOnMessageReceived(){
+    public void testOnMessageReceived() {
         stubFinder.trigger("notification.event");
-        assertEquals("test message",  this.receiver.getMessage());
+        assertEquals("test message", this.receiver.getMessage());
     }
 
 }

@@ -27,6 +27,8 @@ public class MessageVerifierBase {
 
     @Before
     public void setup() {
-        verifier.receive("output", 100, TimeUnit.MILLISECONDS);
+
+        verifier.receive("output", 100, TimeUnit.MILLISECONDS
+        );
     }
 }

@@ -20,6 +20,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
+// https://github.com/spring-cloud/spring-cloud-contract/issues/680
 @SpringBootTest(properties = {"stubrunner.amqp.enabled=true", "stubrunner.stream.enabled=false"})
 @AutoConfigureStubRunner(
     ids = "com.example:contract-producer-amqp:+:stubs:8090",
