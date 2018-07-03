@@ -9,7 +9,7 @@ org.springframework.cloud.contract.spec.Contract.make {
         triggeredBy('send()')
     }
     outputMessage {
-        sentTo "output"
+        sentTo "notification"
         body([
             body: "test message",
             type: "MESSAGE"

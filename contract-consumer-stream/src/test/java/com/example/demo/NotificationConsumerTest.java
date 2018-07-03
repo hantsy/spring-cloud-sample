@@ -34,7 +34,7 @@ public class NotificationConsumerTest {
     @Test
     public void testOnMessageReceived() {
         stubFinder.trigger("notification.event");
-        Message<?> message = messageVerifier.receive("output");
+        Message<?> message = messageVerifier.receive("notification");
         log.debug("payload::" + message);
         assertNotNull(message.getPayload());
         //assertEquals("test message", this.receiver.getMessage());
