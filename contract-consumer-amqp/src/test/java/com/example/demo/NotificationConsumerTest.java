@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.then;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = "stubrunner.amqp.enabled=true")
+@SpringBootTest(properties = {"stubrunner.amqp.enabled=true", "stubrunner.stream.enabled=false"})
 @AutoConfigureStubRunner(
     ids = "com.example:contract-producer-amqp:+:stubs:8090",
     stubsMode = StubRunnerProperties.StubsMode.LOCAL

@@ -20,7 +20,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = "stubrunner.amqp.enabled=true")
+@SpringBootTest(properties = {"stubrunner.amqp.enabled=true", "stubrunner.stream.enabled=false"})
 @AutoConfigureStubRunner(
     ids = "com.example:contract-producer-amqp:+:stubs:8090",
     stubsMode = StubRunnerProperties.StubsMode.LOCAL

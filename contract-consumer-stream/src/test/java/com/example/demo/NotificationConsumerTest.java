@@ -13,10 +13,14 @@ import org.springframework.cloud.contract.verifier.messaging.MessageVerifier;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.messaging.Message;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = "debug=true")
+@SpringBootTest(
+    classes = ContractConsumerStreamApplication.class,
+    properties = "debug=true"
+)
 @AutoConfigureStubRunner(
     ids = "com.example:contract-producer-stream:+:stubs:8090",
     stubsMode = StubRunnerProperties.StubsMode.LOCAL
@@ -27,17 +31,14 @@ public class NotificationConsumerTest {
     @Autowired
     StubFinder stubFinder;
 
-    @Autowired
-    MessageVerifier<Message<?>> messageVerifier;
-
+    @Autowired NotificationListener listener;
 
     @Test
     public void testOnMessageReceived() {
         stubFinder.trigger("notification.event");
-        Message<?> message = messageVerifier.receive("notification");
-        log.debug("payload::" + message);
-        assertNotNull(message.getPayload());
-        //assertEquals("test message", this.receiver.getMessage());
+
+        assertNotNull(listener.getMessage());
+        assertEquals("test message", listener.getMessage());
     }
 
 }
