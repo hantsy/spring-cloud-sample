@@ -27,9 +27,6 @@ public class MessageVerifierBase {
     @Autowired
     Sender sender;
 
-    @MockBean
-    RabbitTemplate rabbitTemplate;
-
     public void send() {
         this.sender.send(Notification.builder().body("test message").build());
     }

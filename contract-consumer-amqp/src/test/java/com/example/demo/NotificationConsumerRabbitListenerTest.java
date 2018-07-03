@@ -15,7 +15,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.BDDMockito.then;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = "stubrunner.amqp.enabled=true")
@@ -23,22 +25,19 @@ import static org.mockito.BDDMockito.then;
     ids = "com.example:contract-producer-amqp:+:stubs:8090",
     stubsMode = StubRunnerProperties.StubsMode.LOCAL
 )
-public class NotificationConsumerTest {
+@ActiveProfiles("listener")
+public class NotificationConsumerRabbitListenerTest {
 
     @Autowired
     StubTrigger stubTrigger;
 
-    @Captor
-    ArgumentCaptor<Notification> argumentCaptor;
-
-    @SpyBean
-    Receiver receiver;
+    @Autowired
+    ReceiverRabbitListener receiver;
 
     @Test
     public void testOnMessageReceived() {
         stubTrigger.trigger("notification.event");
-        then(receiver).should().handleMessage(argumentCaptor.capture());
-        assertEquals("test message", argumentCaptor.getValue().getBody());
+        assertEquals("test message", this.receiver.getMessage());
     }
 
 }
