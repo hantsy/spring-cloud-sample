@@ -1,0 +1,13 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /uaa
+
+spring:
+  application:
+    name: authserver
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
