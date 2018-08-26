@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>oauth2-client-reactive</artifactId>
+    <artifactId>oauth2-client-webclient</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>oauth2-client-reactive</name>
+    <name>oauth2-client-webclient</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
