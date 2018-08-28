@@ -1,0 +1,15 @@
+server:
+  port: 8383
+spring:
+  application:
+    name: hystrix-turbine
+
+management:
+  endpoints:
+    web.exposure.include: '*'
+applications: hystrix
+turbine:
+  aggregator:
+    clusterConfig: ${applications}
+  appConfig: ${applications}
+  instanceUrlSuffix.default: actuator/hystrix.stream
