@@ -12,4 +12,4 @@ turbine:
   aggregator:
     clusterConfig: ${applications}
   appConfig: ${applications}
-  instanceUrlSuffix.default: actuator/hystrix.stream
+#  instanceUrlSuffix.default: actuator/hystrix.stream
