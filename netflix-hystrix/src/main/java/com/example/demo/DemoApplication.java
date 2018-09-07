@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ import static org.springframework.http.ResponseEntity.ok;
 
 @SpringBootApplication
 @EnableCircuitBreaker
+@EnableDiscoveryClient
 public class DemoApplication {
 
     public static void main(String[] args) {
