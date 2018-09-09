@@ -14,6 +14,14 @@ services:
       - "8500:8500"
       - "53:53"
 
+  mongodb:
+    image: mongo
+    volumes:
+    - mongodata:/data/db
+    ports:
+    - "27017:27017"
+    command: --smallfiles #--rest
+    
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:management
@@ -21,4 +29,6 @@ services:
       - "5672:5672"
       - "15672:15672"
 
-
+volumes:
+  mongodata:
+  
