@@ -1,0 +1,516 @@
+repo_name: hantsy/spring-cloud-sample
+report_id: 24b72fcfe2dfffe2ee11446b2c32db75
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-31T08:37:31+00:00'
+requested_by: hantsy
+provider: github
+branch: master
+detected_tools_count: 41
+tools:
+- name: Groovy
+  description: A multi-faceted language for the Java platform
+  website_url: https://groovy-lang.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/997/default_7ff5fcd857f42ad25149f659693d8930bffddf14.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample
+  detection_source: Repo Metadata
+- name: Java
+  description: A concurrent, class-based, object-oriented, language specifically designed
+    to have as few implementation dependencies as possible
+  website_url: https://www.java.com
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/995/K85ZWV2F.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample
+  detection_source: Repo Metadata
+- name: Apache FreeMarker
+  description: A free Java-based template engine
+  website_url: http://freemarker.incubator.apache.org/index.html
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Java Tools
+  image_url: https://img.stackshare.io/service/4456/ymCgaIO0_400x400.jpg
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample
+  detection_source: Repo Metadata
+- name: Project Reactor
+  description: Library for building non-blocking applications on JVM
+  website_url: https://projectreactor.io/
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Java Tools
+  image_url: https://img.stackshare.io/service/5807/default_cbd8ab670309059d7e315252d307d409aa40d793.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/contract-consumer-reactive/pom.xml
+  detection_source: contract-consumer-reactive/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:26:44.000000000 Z
+- name: Spring Cloud
+  description: Spring helps development teams everywhere build simple, portable,fast
+    and flexible JVM-based systems and applications.
+  website_url: https://spring.io/projects/spring-cloud
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/5494/default_b403ef08976083aea6d4caf5a4f19f3325c751e5.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/config-client-discovery-first/pom.xml
+  detection_source: config-client-discovery-first/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: Spring Framework
+  description: An application framework and inversion of control container for the
+    Java platform
+  website_url: https://spring.io/projects/spring-framework
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/2006/spring-framework-project-logo.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/config-client-discovery-first/pom.xml
+  detection_source: config-client-discovery-first/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: jQuery
+  description: The Write Less, Do More, JavaScript Library.
+  website_url: http://jquery.com/
+  version: 2.2.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1021/lxEKmMnB_400x400.jpg
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-authorization-server/pom.xml
+  detection_source: oauth2-authorization-server/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-17 03:34:51.000000000 Z
+- name: H2 Database
+  description: A relational database management system written in Java
+  website_url: http://www.h2database.com/
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/3105/h2-logo_square_400x400.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/pact-provider/pom.xml
+  detection_source: pact-provider/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-02 02:58:12.000000000 Z
+- name: MongoDB
+  description: The database for giant ideas
+  website_url: http://www.mongodb.com/
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1030/leaf-360x360.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/contract-producer-reactive/pom.xml
+  detection_source: contract-producer-reactive/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:26:44.000000000 Z
+- name: RabbitMQ
+  description: Open source multiprotocol messaging broker
+  website_url: http://www.rabbitmq.com/
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Message Queue
+  image_url: https://img.stackshare.io/service/1061/default_df93e9a30d27519161b39d8c1d5c223c1642d187.jpg
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:26:44.000000000 Z
+- name: Redis
+  description: Open source (BSD licensed), in-memory data structure store
+  website_url: http://redis.io/
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: In-Memory Databases
+  image_url: https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:26:44.000000000 Z
+- name: Consul
+  description: A tool for service discovery, monitoring and configuration
+  website_url: http://www.consul.io/
+  license: MPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Open Source Service Discovery
+  image_url: https://img.stackshare.io/service/747/consul-logo-grad_teaser.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:26:44.000000000 Z
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample
+  detection_source: Repo Metadata
+- name: Docker Compose
+  description: Define and run multi-container applications with Docker
+  website_url: https://github.com/docker/compose
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Container Tools
+  image_url: https://img.stackshare.io/service/3136/docker-compose.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:26:44.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample
+  detection_source: Repo Metadata
+- name: Hystrix
+  description: Latency and fault tolerance library
+  website_url: https://github.com/Netflix/Hystrix
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Fault Tolerance Tools
+  image_url: https://img.stackshare.io/service/1758/cde558e9b4a1f07ff99f90d637c38388.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/netflix-hystrix-dashboard/pom.xml
+  detection_source: netflix-hystrix-dashboard/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-08-27 14:46:03.000000000 Z
+- name: NGINX
+  description: A high performance free open source web server powering busiest sites
+    on the Internet.
+  website_url: http://nginx.org
+  open_source: false
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Web Servers
+  image_url: https://img.stackshare.io/service/1052/YMxUfyWf.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/pact/nginx.conf
+  detection_source: pact/nginx.conf
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-03 10:32:14.000000000 Z
+- name: Spock Framework
+  description: The Enterprise-ready testing and specification framework
+  website_url: http://spockframework.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/5548/UB74SoK2_400x400.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/contract-producer-amqp/pom.xml
+  detection_source: contract-producer-amqp/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-03 07:54:59.000000000 Z
+- name: Apache Camel
+  description: A versatile open source integration framework
+  website_url: https://camel.apache.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Platform as a Service
+  image_url: https://img.stackshare.io/service/3276/xWt1RFo6_400x400.jpg
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/config-client-discovery-first/src/main/resources/application.properties
+  detection_source: config-client-discovery-first/src/main/resources/application.properties
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-29 08:34:06.000000000 Z
+- name: Mongo
+  description: Heroku provides services and tools to build, run, and scale web applications.
+    Follow @herokustatus for platform updates. A @salesforce company.
+  website_url: http://wedesignapps.herokuapp.com
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/3519/3wgIDj3j_normal.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:26:44.000000000 Z
+- name: com.h2database:h2
+  description: H2 Database Engine
+  license: MIT-feh
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/pact-provider/pom.xml
+  detection_source: pact-provider/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-02 02:58:12.000000000 Z
+- name: io.projectreactor.ipc:reactor-netty
+  description: Reactive Streams Netty driver
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-client-webclient/pom.xml
+  detection_source: oauth2-client-webclient/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:42:05.000000000 Z
+- name: io.projectreactor:reactor-test
+  description: Reactor Test support
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/contract-consumer-reactive/pom.xml
+  detection_source: contract-consumer-reactive/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:26:44.000000000 Z
+- name: io.rest-assured:rest-assured
+  description: Java DSL for easy testing of REST services
+  version: 3.1.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/pact-provider/pom.xml
+  detection_source: pact-provider/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-02 02:58:12.000000000 Z
+- name: org.apache.httpcomponents:httpclient
+  description: Apache HttpComponents Client
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-authorization-server/pom.xml
+  detection_source: oauth2-authorization-server/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-17 03:34:51.000000000 Z
+- name: org.projectlombok:lombok
+  description: 'Spice up your java: Automatic Resource Management'
+  version: 1.16.20
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-authorization-server/pom.xml
+  detection_source: contract-consumer-amqp/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-06-30 01:27:32.000000000 Z
+- name: org.spockframework:spock-spring
+  description: Spock's Spring Module makes it possible to use Spring's TestContext
+    framework together with Spock
+  version: '1.1'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/contract-producer-amqp/pom.xml
+  detection_source: contract-producer-amqp/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-actuator
+  description: Starter for using Spring Boot's Actuator which provides production
+    ready features to help you monitor and manage your application
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/config-client-discovery-first/pom.xml
+  detection_source: config-client-discovery-first/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-data-jpa
+  description: Starter for using Spring Data JPA with Hibernate
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/pact-provider/pom.xml
+  detection_source: pact-provider/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-security
+  description: Starter for using Spring Security
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-authorization-server/pom.xml
+  detection_source: oauth2-authorization-server/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-17 03:34:51.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-test
+  description: Starter for testing Spring Boot applications with libraries including
+    JUnit
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/config-client-discovery-first/pom.xml
+  detection_source: config-client-discovery-first/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-thymeleaf
+  description: Starter for building MVC web applications using Thymeleaf views
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-sso/pom.xml
+  detection_source: oauth2-sso/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-17 03:34:51.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-web
+  description: Starter for building web, including RESTful, applications using Spring
+    MVC
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/config-client-discovery-first/pom.xml
+  detection_source: config-client-discovery-first/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: org.springframework.cloud:spring-cloud-config-server
+  description: Spring-cloud-config-server
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/config-server-discovery-first/pom.xml
+  detection_source: config-server-discovery-first/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: org.springframework.cloud:spring-cloud-starter-config
+  description: Spring Cloud Starter
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/config-client-discovery-first/pom.xml
+  detection_source: config-client-discovery-first/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: org.springframework.integration:spring-integration-amqp
+  description: Spring Integration AMQP Support
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/contract-consumer-integration/pom.xml
+  detection_source: contract-consumer-integration/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-11-22 10:42:57.000000000 Z
+- name: org.springframework.security:spring-security-test
+  description: Spring-security-test
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-authorization-server/pom.xml
+  detection_source: oauth2-authorization-server/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-17 03:34:51.000000000 Z
+- name: org.springframework:spring-webflux
+  description: Spring WebFlux
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-client-webclient/pom.xml
+  detection_source: oauth2-client-webclient/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-09-09 14:42:05.000000000 Z
+- name: org.webjars:bootstrap
+  description: WebJar for Bootstrap
+  version: 3.3.7
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-authorization-server/pom.xml
+  detection_source: oauth2-authorization-server/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-17 03:34:51.000000000 Z
+- name: org.webjars:jquery
+  description: WebJar for jQuery
+  version: 2.2.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-authorization-server/pom.xml
+  detection_source: oauth2-authorization-server/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-17 03:34:51.000000000 Z
+- name: org.webjars:webjars-locator
+  description: WebJar Locator
+  version: '0.32'
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/spring-cloud-sample/blob/master/oauth2-authorization-server/pom.xml
+  detection_source: oauth2-authorization-server/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2018-07-17 03:34:51.000000000 Z
